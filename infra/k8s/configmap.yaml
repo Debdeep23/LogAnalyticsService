@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: log-analytics-config
+  namespace: log-analytics
+data:
+  KAFKA_BOOTSTRAP_SERVERS: "kafka:9092"
+  KAFKA_TOPIC_LOGS: "logs_raw"
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://postgres:5432/logdb"
+  MINIO_ENDPOINT: "http://minio:9000"
+  MINIO_BUCKET: "logs-raw"
+

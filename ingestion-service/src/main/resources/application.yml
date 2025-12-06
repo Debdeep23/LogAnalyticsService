@@ -1,0 +1,39 @@
+server:
+  port: ${SERVER_PORT:8081}
+
+spring:
+  application:
+    name: ingestion-service
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      retries: 3
+      properties:
+        enable.idempotence: true
+        max.in.flight.requests.per.connection: 5
+
+kafka:
+  topic:
+    logs: ${KAFKA_TOPIC_LOGS:logs_raw}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+logging:
+  level:
+    root: INFO
+    com.loganalytics: DEBUG
+    org.apache.kafka: WARN
+

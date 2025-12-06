@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: log-analytics-ingress
+  namespace: log-analytics
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: logs.local
+      http:
+        paths:
+          - path: /ingest
+            pathType: Prefix
+            backend:
+              service:
+                name: ingestion-service
+                port:
+                  number: 8081
+          - path: /query
+            pathType: Prefix
+            backend:
+              service:
+                name: query-service
+                port:
+                  number: 8083
+
