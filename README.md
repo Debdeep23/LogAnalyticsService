@@ -108,6 +108,9 @@ curl http://localhost:8083/actuator/health
 - **Prometheus**: http://localhost:9090
 - **MinIO Console**: http://localhost:9001 (minioadmin/minioadmin123)
 
+  <img width="1671" height="859" alt="Screenshot 2025-12-06 at 12 27 20 AM" src="https://github.com/user-attachments/assets/c6d281f6-08b0-4b82-b57c-327f2e37841b" />
+
+
 ---
 
 ## ☁️ AWS Deployment
